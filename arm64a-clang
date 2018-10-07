@@ -1,0 +1,13 @@
+[settings]
+os_build=Linux
+arch_build=x86_64
+os=Android
+os.api_level=21
+arch=armv8 
+compiler=clang
+compiler.version=6
+compiler.libcxx=libc++
+build_type=Release
+
+[build_requires]
+android-toolchain/r17b@block/testing

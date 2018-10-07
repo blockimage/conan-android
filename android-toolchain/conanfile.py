@@ -34,8 +34,8 @@ class AndroidtoolchainConan(ConanFile):
             raise Exception("Not supported compiler, gcc and clang available")
         if str(self.settings.compiler) == "gcc" and str(self.settings.compiler.version) not in ("4.8", "4.9"):
             raise Exception("Not supported gcc compiler version, 4.8 and 4.9 available")
-        if str(self.settings.compiler) == "clang" and str(self.settings.compiler.version) != "3.8":
-            raise Exception("Not supported clang compiler version, only 3.8 available")
+        if str(self.settings.compiler) == "clang" and str(self.settings.compiler.version) != "6.0":
+            raise Exception("Not supported clang compiler version, only 6.0 available")
 
     @property
     def arch_id_str(self):
@@ -107,6 +107,8 @@ class AndroidtoolchainConan(ConanFile):
         sysroot = os.path.join(self.package_folder, "sysroot")
         self.env_info.CC =  os.path.join(self.package_folder, "bin", cc_compiler)
         self.env_info.CXX = os.path.join(self.package_folder, "bin", cxx_compiler)
+        self.env_info.SYSROOT = sysroot
+        self.env_info.CXXFLAGS = "-std=c++11 -I%s -I%s" % (os.path.join(self.package_folder, "include", "c++", "4.9.x"), os.path.join(self.package_folder, "include", "c++", "4.9.x", "arm-linux-androideabi", "armv7-a"))
 
         self.env_info.CONAN_CMAKE_FIND_ROOT_PATH = sysroot
         self.env_info.PATH.extend([os.path.join(self.package_folder, onedir) for onedir in self.cpp_info.bindirs])

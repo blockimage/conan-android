@@ -3,7 +3,7 @@ from conans import ConanFile, CMake
 
 class LibgtestConan(ConanFile):
     name = "libgtest"
-    version = "1.9.0
+    version = "1.9.0"
     license = "Refer to LICENSE file"
     url = "https://github.com/google/googletest"
     description = "googletest"
@@ -15,7 +15,7 @@ class LibgtestConan(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure(source_folder="*")
+        cmake.configure(source_folder=".")
         cmake.build()
 
         # Explicit way:

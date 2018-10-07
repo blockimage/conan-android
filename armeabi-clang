@@ -2,10 +2,10 @@
 os_build=Linux
 arch_build=x86_64
 os=Android
-os.api_level=21
+os.api_level=23
 arch=armv7 
 compiler=clang
-compiler.version=6
+compiler.version=6.0
 compiler.libcxx=libc++
 build_type=Release
 
